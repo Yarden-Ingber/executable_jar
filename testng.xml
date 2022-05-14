@@ -1,0 +1,504 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test-method Suite" parallel="tests" thread-count="10" >
+    <test name="Test-method test 1" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 2" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 3" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 4" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 5" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 6" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 7" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 8" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 9" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 10" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 11" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 12" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 13" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 14" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 15" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 16" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 17" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 18" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 19" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 20" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 21" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 22" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 23" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 24" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 25" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 26" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 27" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 28" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 29" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 30" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 31" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 32" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 33" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 34" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 35" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 36" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 37" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test 38" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test39" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test40" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test41" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test42" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test43" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test44" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test45" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test46" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test47" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test48" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test49" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test50" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test51" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test52" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test53" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test54" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test55" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test56" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test57" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test58" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test59" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test60" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test61" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test62" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test63" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test64" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test65" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test66" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test67" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test68" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test69" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test70" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test71" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test72" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test73" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test74" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test75" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test76" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test77" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test78" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test79" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test80" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test81" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test82" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test83" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test84" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test85" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test86" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test87" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test88" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test89" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test90" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test91" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test92" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test93" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test94" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test95" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test96" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test97" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test98" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test99" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+    <test name="Test-method test100" group-by-instances="true">
+        <classes>
+            <class name="EGTests" />
+        </classes>
+    </test>
+</suite>
