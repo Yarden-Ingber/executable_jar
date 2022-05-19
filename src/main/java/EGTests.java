@@ -8,6 +8,7 @@ import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
@@ -25,7 +26,7 @@ public class EGTests {
 
 
     private static EyesRunner runner = new VisualGridRunner();
-    private static BatchInfo batchInfo = new BatchInfo(batchName);
+    private static BatchInfo batchInfo = new BatchInfo(JarArgsHandler.getBatchName());
     private static final LogHandler logHandler = new StdoutLogHandler(false);
 
     @Test
@@ -34,6 +35,9 @@ public class EGTests {
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
         ChromeOptions chromeOptions = new ChromeOptions();
+        if (JarArgsHandler.isIsUsingTunnel()) {
+            chromeOptions.setCapability("applitools:tunnel", true);
+        }
         WebDriver driver;
         if (JarArgsHandler.isIsUsingEgClient()) {
             driver = new RemoteWebDriver(new URL("http://localhost:8080/"), chromeOptions);
@@ -51,6 +55,9 @@ public class EGTests {
             driver.manage().window().maximize();
             eyes.check(Target.window().fully(true).withName(url));
             eyes.closeAsync();
+        } catch (Throwable t) {
+            System.out.println("ERROR: session ID: " + ((RemoteWebDriver) driver).getSessionId());
+            throw t;
         } finally {
             driver.quit();
         }
