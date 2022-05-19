@@ -2,8 +2,10 @@ public class JarArgsHandler {
 
     private static String testNgSuiteFile = "testng.xml";
     private static boolean isUsingEgClient = false;
+    private static boolean isUsingTunnel = false;
     private static String website = "https://www.google.com/";
-    private static final String version = "1.0";
+    private static final String version = "1.2";
+    private static String batchName = "Execution grid tests";
 
     public static String getTestNgSuiteFile() {
         return testNgSuiteFile;
@@ -29,19 +31,41 @@ public class JarArgsHandler {
         JarArgsHandler.website = website;
     }
 
+    public static String getBatchName() {
+        return batchName;
+    }
+
+    public static void setBatchName(String batchName) {
+        JarArgsHandler.batchName = batchName;
+    }
+
+    public static boolean isIsUsingTunnel() {
+        return isUsingTunnel;
+    }
+
+    public static void setIsUsingTunnel(boolean isUsingTunnel) {
+        JarArgsHandler.isUsingTunnel = isUsingTunnel;
+    }
+
     static void handleArgs(String[] args) {
         for (int i=0; i<args.length; i++) {
             if (Inputs.testNgSuiteFile.isEqual(args[i])) {
                 setTestNgSuiteFile(args[i+1]);
             } else if (Inputs.usingEgClient.isEqual(args[i])) {
                 setIsUsingEgClient(true);
+            } else if (Inputs.tunnel.isEqual(args[i])) {
+                setIsUsingTunnel(true);
             } else if (Inputs.website.isEqual(args[i])) {
                 setWebsite(args[i+1]);
-            } else if (args.length < 2 && Inputs.help.isEqual(args[i])) {
+            } else if (Inputs.batchName.isEqual(args[i])) {
+                setBatchName(args[i+1]);
+            }else if (args.length < 2 && Inputs.help.isEqual(args[i])) {
                 System.out.println("\noptions:\n" +
                         "  -s, --suite     Path to the TestNG.xml test suite file. Default is testng.xml in the same directory.\n" +
                         "  -e, --eg-client     Flag to run tests through the eg-client. Default is false.\n" +
                         "  -w, --website     The url the test will call eyes.check() on. Default is https://www.google.com/.\n" +
+                        "  -b, --batchName     The name of the batch in eyes dashboard. Default is \"Execution grid tests\".\n" +
+                        "  -t, --tunnel     Flag to run tests through the tunnel. Default is false.\n" +
                         "  -v, --version     Print the version of this JAR" +
                         "  -h, --help     Print help file.\n");
                 System.exit(0);
@@ -59,10 +83,10 @@ public class JarArgsHandler {
         }
     }
 
-
     public enum Inputs {
         testNgSuiteFile("--suite", "-s"), usingEgClient("--eg-client", "-e"), website("--website", "-w"),
-        help("--help", "-h"), version("--version", "-v");
+        help("--help", "-h"), version("--version", "-v"), batchName("--batchName", "-b"),
+        tunnel("--tunnel", "-t");
 
         public String input;
         public String shortInput;
