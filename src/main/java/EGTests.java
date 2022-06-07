@@ -4,6 +4,7 @@ import com.applitools.eyes.LogHandler;
 import com.applitools.eyes.StdoutLogHandler;
 import com.applitools.eyes.config.Configuration;
 import com.applitools.eyes.selenium.BrowserType;
+import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
@@ -25,7 +26,8 @@ public class EGTests {
     private static final String batchId = UUID.randomUUID().toString();
 
 
-    private static EyesRunner runner = new VisualGridRunner();
+    private static EyesRunner classicRunner = new ClassicRunner();
+    private static EyesRunner visualGridRunner = new VisualGridRunner();
     private static BatchInfo batchInfo = new BatchInfo(JarArgsHandler.getBatchName());
     private static final LogHandler logHandler = new StdoutLogHandler(false);
 
@@ -35,8 +37,15 @@ public class EGTests {
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
         ChromeOptions chromeOptions = new ChromeOptions();
-        if (JarArgsHandler.isIsUsingTunnel()) {
+        if (JarArgsHandler.isIsUsingTunnel() && JarArgsHandler.isIsUsingEgClient()) {
             chromeOptions.setCapability("applitools:tunnel", true);
+        }
+        if (JarArgsHandler.isIsUsingTunnel() && !JarArgsHandler.isIsUsingEgClient()) {
+            chromeOptions.setCapability("browserName", "chrome");
+            chromeOptions.setCapability("applitools:x-tunnel-id-0", System.getenv("TUNNEL_ID"));
+            chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
+            chromeOptions.setCapability("applitools:eyesServerUrl", System.getenv("APPLITOOLS_SERVER_URL"));
+            chromeOptions.addArguments("--headless");
         }
         WebDriver driver;
         if (JarArgsHandler.isIsUsingEgClient()) {
@@ -46,7 +55,12 @@ public class EGTests {
             chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
             driver = new RemoteWebDriver(new URL("https://exec-wus.applitools.com/"), chromeOptions);
         }
-        Eyes eyes = new Eyes(runner);
+        Eyes eyes;
+        if (JarArgsHandler.isIsUsingVGRunner()) {
+            eyes = new Eyes(visualGridRunner);
+        } else {
+            eyes = new Eyes(classicRunner);
+        }
         eyes.setLogHandler(logHandler);
         try {
             driver.get(url);
