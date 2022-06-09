@@ -12,12 +12,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
 
+@Listeners(io.cloudbeat.testng.Plugin.class)
 public class EGTests {
 
     private static final String batchName = "Execution grid tests";
