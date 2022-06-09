@@ -35,7 +35,7 @@ public class EGTests extends CbTestNg {
     private static final LogHandler logHandler = new StdoutLogHandler(false);
 
     @Test
-    private void test() throws MalformedURLException {
+    public void test() throws MalformedURLException {
         System.out.println("Batch ID: " + batchId);
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
