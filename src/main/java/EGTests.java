@@ -8,6 +8,7 @@ import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
+import io.cloudbeat.testng.CbTestNg;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,7 +21,7 @@ import java.net.URL;
 import java.util.UUID;
 
 @Listeners(io.cloudbeat.testng.Plugin.class)
-public class EGTests {
+public class EGTests extends CbTestNg {
 
     private static final String batchName = "Execution grid tests";
     private static final String appName = "Execution grid";
@@ -57,6 +58,7 @@ public class EGTests {
             chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
             driver = new RemoteWebDriver(new URL("https://exec-wus.applitools.com/"), chromeOptions);
         }
+        setupDriver(driver);
         Eyes eyes;
         if (JarArgsHandler.isIsUsingVGRunner()) {
             eyes = new Eyes(visualGridRunner);
@@ -65,12 +67,14 @@ public class EGTests {
         }
         eyes.setLogHandler(logHandler);
         try {
+            startStep("Step");
             driver.get(url);
             eyes.setConfiguration(getConfiguration(eyes));
             driver = eyes.open(driver, appName, testName);
             driver.manage().window().maximize();
             eyes.check(Target.window().fully(true).withName(url));
             eyes.closeAsync();
+            endStep("Step");
         } catch (Throwable t) {
             System.out.println("ERROR: session ID: " + ((RemoteWebDriver) driver).getSessionId());
             throw t;
