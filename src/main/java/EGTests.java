@@ -8,7 +8,7 @@ import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
-import io.cloudbeat.testng.CbTestNg;
+import io.cloudbeat.testng.CbTestNGListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,8 +20,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
 
-@Listeners(io.cloudbeat.testng.Plugin.class)
-public class EGTests extends CbTestNg {
+@Listeners(CbTestNGListener.class)
+public class EGTests { //extends CbTestNg {
 
     private static final String appName = "Execution grid";
     private static final String testName = "Execution grid tests";
@@ -33,22 +33,79 @@ public class EGTests extends CbTestNg {
     private static final LogHandler logHandler = new StdoutLogHandler(false);
 
     @Test
-    public void test() throws Exception {
+    public void test1() throws Exception {
+        CbTestNGListener.startStep("Init");
         System.out.println("Batch ID: " + batchId);
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
         Eyes eyes = new Eyes(classicRunner);
         eyes.setLogHandler(logHandler);
-        setupWebDriver();
+        WebDriver driver = CbTestNGListener.createWebDriver();
+        CbTestNGListener.endLastStep();
+        //setupWebDriver();
         try {
-            startStep("Step");
+            CbTestNGListener.startStep("Open website");
             driver.get(url);
             eyes.setConfiguration(getConfiguration(eyes));
             driver = eyes.open(driver, appName, testName);
             driver.manage().window().maximize();
-            eyes.check(Target.window().fully(true).withName(url));
+            CbTestNGListener.endLastStep();
+            CbTestNGListener.step("Validate", () -> {
+                eyes.check(Target.window().fully(true).withName(url));
+                eyes.closeAsync();
+            });
+            //endStep("Step");
+        } catch (Throwable t) {
+            System.out.println("ERROR: session ID: " + ((RemoteWebDriver) driver).getSessionId());
+            throw t;
+        } finally {
+            driver.quit();
+        }
+    }
+
+    @Test
+    public void test2() throws MalformedURLException {
+        CbTestNGListener.startStep("Init");
+        System.out.println("Batch ID: " + batchId);
+        batchInfo.setId(batchId);
+        String url = JarArgsHandler.getWebsite();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        if (JarArgsHandler.isIsUsingTunnel() && JarArgsHandler.isIsUsingEgClient()) {
+            chromeOptions.setCapability("applitools:tunnel", true);
+        }
+        if (JarArgsHandler.isIsUsingTunnel() && !JarArgsHandler.isIsUsingEgClient()) {
+            chromeOptions.setCapability("browserName", "chrome");
+            chromeOptions.setCapability("applitools:x-tunnel-id-0", System.getenv("TUNNEL_ID"));
+            chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
+            chromeOptions.setCapability("applitools:eyesServerUrl", System.getenv("APPLITOOLS_SERVER_URL"));
+            chromeOptions.addArguments("--headless");
+        }
+        WebDriver driver;
+        if (JarArgsHandler.isIsUsingEgClient()) {
+            driver = new RemoteWebDriver(new URL("http://localhost:8080/"), chromeOptions);
+        } else {
+            chromeOptions.setCapability("applitools:eyesServerUrl", System.getenv("APPLITOOLS_SERVER_URL"));
+            chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
+            driver = new RemoteWebDriver(new URL("https://exec-wus.applitools.com/"), chromeOptions);
+        }
+        driver = CbTestNGListener.wrapWebDriver(driver);
+        //setupDriver(driver);
+        Eyes eyes = new Eyes(classicRunner);
+        eyes.setLogHandler(logHandler);
+        CbTestNGListener.endLastStep();
+        try {
+            //startStep("Step");
+            CbTestNGListener.startStep("Open website");
+            driver.get(url);
+            eyes.setConfiguration(getConfiguration(eyes));
+            driver = eyes.open(driver, appName, testName);
+            driver.manage().window().maximize();
+            CbTestNGListener.endLastStep();
+            CbTestNGListener.step("Validate window", () -> {
+                eyes.check(Target.window().fully(true).withName(url));
+            });
             eyes.closeAsync();
-            endStep("Step");
+            //endStep("Step");
         } catch (Throwable t) {
             System.out.println("ERROR: session ID: " + ((RemoteWebDriver) driver).getSessionId());
             throw t;
