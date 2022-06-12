@@ -38,14 +38,14 @@ public class EGTests { //extends CbTestNg {
         String url = JarArgsHandler.getWebsite();
         Eyes eyes = new Eyes(classicRunner);
         eyes.setLogHandler(logHandler);
-        WebDriver driver = CbTestNGListener.createWebDriver();
+        WebDriver driver = CbTestNGListener.createWebDriver(true);
         CbTestNGListener.endLastStep();
         //setupWebDriver();
         try {
             CbTestNGListener.startStep("Open website");
             driver.get(url);
             eyes.setConfiguration(getConfiguration(eyes));
-            driver = eyes.open(driver, appName, testName);
+            driver = CbTestNGListener.wrapWebDriver(eyes.open(driver, appName, testName));
             driver.manage().window().maximize();
             CbTestNGListener.endLastStep();
             CbTestNGListener.step("Validate", () -> {
