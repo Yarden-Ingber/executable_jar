@@ -7,10 +7,8 @@ import com.applitools.eyes.selenium.BrowserType;
 import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
-import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import io.cloudbeat.testng.CbTestNGListener;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Listeners;
@@ -75,17 +73,17 @@ public class EGTests { //extends CbTestNg {
         }
         if (JarArgsHandler.isIsUsingTunnel() && !JarArgsHandler.isIsUsingEgClient()) {
             chromeOptions.setCapability("browserName", "chrome");
-            chromeOptions.setCapability("applitools:x-tunnel-id-0", System.getenv("TUNNEL_ID"));
-            chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
-            chromeOptions.setCapability("applitools:eyesServerUrl", System.getenv("APPLITOOLS_SERVER_URL"));
+            chromeOptions.setCapability("applitools:x-tunnel-id-0", CbTestNGListener.getEnv("TUNNEL_ID"));
+            chromeOptions.setCapability("applitools:apiKey", CbTestNGListener.getEnv("APPLITOOLS_API_KEY"));
+            chromeOptions.setCapability("applitools:eyesServerUrl", CbTestNGListener.getEnv("APPLITOOLS_SERVER_URL"));
             chromeOptions.addArguments("--headless");
         }
         WebDriver driver;
         if (JarArgsHandler.isIsUsingEgClient()) {
             driver = new RemoteWebDriver(new URL("http://localhost:8080/"), chromeOptions);
         } else {
-            chromeOptions.setCapability("applitools:eyesServerUrl", System.getenv("APPLITOOLS_SERVER_URL"));
-            chromeOptions.setCapability("applitools:apiKey", System.getenv("APPLITOOLS_API_KEY"));
+            chromeOptions.setCapability("applitools:eyesServerUrl", CbTestNGListener.getEnv("APPLITOOLS_SERVER_URL"));
+            chromeOptions.setCapability("applitools:apiKey", CbTestNGListener.getEnv("APPLITOOLS_API_KEY"));
             driver = new RemoteWebDriver(new URL("https://exec-wus.applitools.com/"), chromeOptions);
         }
         driver = CbTestNGListener.wrapWebDriver(driver);
@@ -117,10 +115,10 @@ public class EGTests { //extends CbTestNg {
     private Configuration getConfiguration(Eyes eyes) {
         Configuration configuration = eyes.getConfiguration();
         configuration.setBatch(batchInfo);
-        System.out.println("api key is:" + System.getenv("APPLITOOLS_API_KEY"));
-        System.out.println("server irl is:" + System.getenv("APPLITOOLS_SERVER_URL"));
-        configuration.setApiKey(System.getenv("APPLITOOLS_API_KEY"));
-        configuration.setServerUrl(System.getenv("APPLITOOLS_SERVER_URL"));
+        System.out.println("api key is:" + CbTestNGListener.getEnv("APPLITOOLS_API_KEY"));
+        System.out.println("server irl is:" + CbTestNGListener.getEnv("APPLITOOLS_SERVER_URL"));
+        configuration.setApiKey(CbTestNGListener.getEnv("APPLITOOLS_API_KEY"));
+        configuration.setServerUrl(CbTestNGListener.getEnv("APPLITOOLS_SERVER_URL"));
         configuration.setSendDom(true);
         configuration.addBrowser(1366, 768, BrowserType.CHROME);
         configuration.setSaveDiffs(true);
