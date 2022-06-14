@@ -3,7 +3,7 @@ public class JarArgsHandler {
     private static String testNgSuiteFile = "testng.xml";
     private static boolean isUsingEgClient = false;
     private static boolean isUsingTunnel = false;
-    private static String website = "https://www.google.com/";
+    private static String website = "https://www.applitools.com/";
     private static final String version = "1.4";
     private static String batchName = "Execution grid tests";
     private static boolean isUsingVGRunner = true;
