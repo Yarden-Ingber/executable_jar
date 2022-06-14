@@ -61,6 +61,7 @@ public class EGTests {
     public void classicRunner() throws MalformedURLException {
         CbTestNGListener.startStep("Setup driver");
         System.out.println("This is using the classic");
+        System.out.println("api key is:" + CbTestNGListener.getEnv("APPLITOOLS_API_KEY"));
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
         Eyes eyes = new Eyes(new ClassicRunner());
