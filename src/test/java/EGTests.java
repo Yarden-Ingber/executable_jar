@@ -31,7 +31,7 @@ public class EGTests {
     @Test
     public void vgRunner() throws Exception {
         CbTestNGListener.startStep("Setup driver");
-        System.out.println("This is using the VG");
+        System.out.println("This is using the VG 2");
         batchInfo.setId(batchId);
         String url = JarArgsHandler.getWebsite();
         Eyes eyes = new Eyes(new VisualGridRunner());
